@@ -1,0 +1,65 @@
+<div>
+  <div class="add-title">
+    <h2 class="primary">Reservar pelicula por sucursal</h2>
+  </div>
+  <div>
+    <form [formGroup]="addCusForm" (change)="formChanged()">
+      <mat-grid-list cols="2" rowHeight="85px">
+
+        <mat-grid-tile>
+          <div class="text-inside">
+            <mat-form-field>
+              <mat-select placeholder="Seleccione la sucursal" name="selSucursal" (selectionChange)="changeSucursal($event.value)"
+                >
+                <mat-option *ngFor="let sucursal of sucursales" [value]="sucursal.id">{{
+                  sucursal.nombre }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <div class="text-inside">
+            <mat-form-field>
+              <mat-select placeholder="Seleccione la pelicula" name="selPelicula" (selectionChange)="changePelicula($event.value)"
+                >
+                <mat-option *ngFor="let pelicula of peliculas" [value]="pelicula.id">{{
+                  pelicula.nombreOriginal }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </mat-grid-tile>
+
+      <mat-grid-tile>
+        <div class="text-inside">
+          <mat-form-field>
+            <mat-select placeholder="Fecha, hora y sala" name="selAgenda" (selectionChange)="changeAgenda($event.value)"
+              >
+              <mat-option *ngFor="let peliculaAgenda of peliculaAgendas" [value]="peliculaAgenda.id">{{
+                peliculaAgenda.salasBySalasId.nombre}} - {{peliculaAgenda.fechaHoraAgenda | date:"yyyy:MM:dd HH:mm"}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <div class="text-inside">
+          <mat-form-field>
+            <input matInput type="number" placeholder="valor pago" value={{valorPago}} formControlName="valorPago" required>
+          </mat-form-field>
+        </div>
+      </mat-grid-tile>
+
+    </mat-grid-list>
+
+
+
+      <div class="btn-sec">
+        <button mat-raised-button type="submit" color="primary" class="Update-btn"
+          (click)="agregarSalaReserva()">Guardar</button>
+        <button mat-raised-button type="button" class="Discard-btn" (click)="closeDialog()">Cancelar</button>
+      </div>
+
+    </form>
+  </div>
+</div>

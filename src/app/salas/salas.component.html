@@ -1,0 +1,75 @@
+<div *ngIf="isLoading" class="isLoading">
+    <mat-progress-spinner color="primary" mode="indeterminate">
+    </mat-progress-spinner>
+</div>
+
+<mat-toolbar>
+    <span>Gestión de Salas</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon plus-icon" (click)="abrirDialogoCrear()"
+        aria-label="Example icon-button with plus icon">
+        <mat-icon>add_box</mat-icon>
+    </button>
+</mat-toolbar>
+
+<mat-table [dataSource]="salas" matSort>
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
+        <mat-cell *matCellDef="let sala"> {{sala.id}} </mat-cell>
+    </ng-container>
+
+    <!-- sala Column-->
+    <ng-container matColumnDef="nombre">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+        <mat-cell *matCellDef="let sala"> {{sala.nombre}} </mat-cell>
+    </ng-container>
+
+    <!-- nombre Column-->
+    <ng-container matColumnDef="sucursal">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Sucursal </mat-header-cell>
+        <mat-cell *matCellDef="let sala"> {{sala.sucursalesBySucursalesId.nombre}} </mat-cell>
+    </ng-container>
+
+    <!-- ciudad Column-->
+    <ng-container matColumnDef="tipo">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Tipo </mat-header-cell>
+        <mat-cell *matCellDef="let sala"> {{sala.salaTiposByTipoSalaId.nombre}} </mat-cell>
+    </ng-container>
+
+
+    <!-- filas Column-->
+    <ng-container matColumnDef="numeroFilas">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Filas </mat-header-cell>
+        <mat-cell *matCellDef="let sala"> {{sala.numeroFilas}} </mat-cell>
+    </ng-container>
+
+    <!-- sillas x fila Column-->
+    <ng-container matColumnDef="sillasPorFila">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Sillas Por Fila </mat-header-cell>
+        <mat-cell *matCellDef="let sala"> {{sala.numeroSillasFila}} </mat-cell>
+    </ng-container>
+
+
+    <!-- ciudad Column-->
+    <ng-container matColumnDef="usuarioCrea">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Usuario Crea </mat-header-cell>
+        <mat-cell *matCellDef="let ciudad"> {{ciudad.usuarioCrea}} </mat-cell>
+    </ng-container>
+
+    <!-- ciudad Column-->
+    <ng-container matColumnDef="fechaHoraCrea">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Crea </mat-header-cell>
+        <mat-cell *matCellDef="let ciudad"> {{ciudad.terminalCrea}} </mat-cell>
+    </ng-container>
+
+    <!-- ciudad Column-->
+    <ng-container matColumnDef="terminalCrea">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Terminal Crea </mat-header-cell>
+        <mat-cell *matCellDef="let ciudad"> {{ciudad.terminalCrea}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+</mat-table>

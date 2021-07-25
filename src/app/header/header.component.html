@@ -1,0 +1,18 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <span><a mat-button href="https://econocine.tk" style="font-size: larger;"><img src="/assets/logo.png" style="max-height:64px;"></a></span>
+        <span class="example-fill-remaining-space"></span>
+        <span class="align-center"></span>
+        <span class="example-spacer"></span>
+        <a mat-button *ngIf="!loginService.isUserLoggedIn()" routerLink="/login" class="nav-link">Login</a>
+        <a mat-button *ngIf="loginService.isUserLoggedIn()" routerLink="/" class="nav-link">Home</a>
+        <a mat-button *ngIf="loginService.isUserLoggedIn()" routerLink="/ciudades" class="nav-link">Ciudades</a>
+        <a mat-button *ngIf="loginService.isUserLoggedIn()" routerLink="/sucursales" class="nav-link">Sucursales</a>
+        <a mat-button *ngIf="loginService.isUserLoggedIn()" routerLink="/salas" class="nav-link">Salas</a>
+        <a mat-button *ngIf="loginService.isUserLoggedIn()" routerLink="/peliculas" class="nav-link">Peliculas</a>
+        <a mat-button *ngIf="loginService.isUserLoggedIn()" routerLink="/sucursales-peliculas" class="nav-link">Sucursales y Peliculas</a>
+        <a mat-button *ngIf="loginService.isUserLoggedIn()" routerLink="/agendas" class="nav-link">Agendas</a>
+        <a mat-button *ngIf="loginService.isUserLoggedIn()" routerLink="/reservas" class="nav-link">Reservas</a>
+        <a mat-button *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" class="nav-link">LogOut</a>
+    </mat-toolbar-row>
+</mat-toolbar>

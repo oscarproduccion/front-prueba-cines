@@ -1,0 +1,81 @@
+<div *ngIf="isLoading" class="isLoading">
+    <mat-progress-spinner color="primary" mode="indeterminate">
+    </mat-progress-spinner>
+</div>
+
+<mat-toolbar>
+    <span>Gestión de Peliculas</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon plus-icon" (click)="abrirDialogoCrear()"
+        aria-label="Example icon-button with plus icon">
+        <mat-icon>add_box</mat-icon>
+    </button>
+</mat-toolbar>
+
+<mat-table [dataSource]="peliculas" matSort>
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
+        <mat-cell *matCellDef="let pelicula"> {{pelicula.id}} </mat-cell>
+    </ng-container>
+
+    <!-- sala Column-->
+    <ng-container matColumnDef="nombreOriginal">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre Original </mat-header-cell>
+        <mat-cell *matCellDef="let pelicula"> {{pelicula.nombreOriginal}} </mat-cell>
+    </ng-container>
+
+    <!-- nombre Column-->
+    <ng-container matColumnDef="nombreTraduccion">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre Traduccion </mat-header-cell>
+        <mat-cell *matCellDef="let pelicula"> {{pelicula.nombreTraduccion}} </mat-cell>
+    </ng-container>
+
+    <!-- ciudad Column-->
+    <ng-container matColumnDef="fechaEstreno">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Estreno </mat-header-cell>
+        <mat-cell *matCellDef="let pelicula"> {{pelicula.fechaEstreno}} </mat-cell>
+    </ng-container>
+
+
+    <!-- filas Column-->
+    <ng-container matColumnDef="fechaBaja">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Baja </mat-header-cell>
+        <mat-cell *matCellDef="let pelicula"> {{pelicula.fechaBaja}} </mat-cell>
+    </ng-container>
+
+    <!-- sillas x fila Column-->
+    <ng-container matColumnDef="duracion">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Duración </mat-header-cell>
+        <mat-cell *matCellDef="let pelicula"> {{pelicula.duracion}} </mat-cell>
+    </ng-container>
+
+    <!-- sillas x fila Column-->
+    <ng-container matColumnDef="formato">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Formato </mat-header-cell>
+        <mat-cell *matCellDef="let pelicula"> {{pelicula.formato}} </mat-cell>
+    </ng-container>
+
+
+    <!-- ciudad Column-->
+    <ng-container matColumnDef="usuarioCrea">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Usuario Crea </mat-header-cell>
+        <mat-cell *matCellDef="let ciudad"> {{ciudad.usuarioCrea}} </mat-cell>
+    </ng-container>
+
+    <!-- ciudad Column-->
+    <ng-container matColumnDef="fechaHoraCrea">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Crea </mat-header-cell>
+        <mat-cell *matCellDef="let ciudad"> {{ciudad.terminalCrea}} </mat-cell>
+    </ng-container>
+
+    <!-- ciudad Column-->
+    <ng-container matColumnDef="terminalCrea">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Terminal Crea </mat-header-cell>
+        <mat-cell *matCellDef="let ciudad"> {{ciudad.terminalCrea}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+</mat-table>

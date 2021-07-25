@@ -1,0 +1,61 @@
+<div *ngIf="isLoading" class="isLoading">
+    <mat-progress-spinner color="primary" mode="indeterminate">
+    </mat-progress-spinner>
+</div>
+
+<mat-toolbar>
+    <span>Gestión de Sucursales</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon plus-icon" (click)="abrirDialogoCrear()"
+        aria-label="Example icon-button with plus icon">
+        <mat-icon>add_box</mat-icon>
+    </button>
+</mat-toolbar>
+
+<mat-table [dataSource]="sucursales" matSort>
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> id </mat-header-cell>
+        <mat-cell *matCellDef="let sucursal"> {{sucursal.id}} </mat-cell>
+    </ng-container>
+
+    <!-- nombre Column-->
+    <ng-container matColumnDef="nombre">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+        <mat-cell *matCellDef="let sucursal"> {{sucursal.nombre}} </mat-cell>
+    </ng-container>
+
+    <!-- ciudad Column-->
+    <ng-container matColumnDef="ciudad">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Ciudad </mat-header-cell>
+        <mat-cell *matCellDef="let sucursal"> {{sucursal.ciudadesByCiudadesId.nombre}} </mat-cell>
+    </ng-container>
+
+    <!-- ciudad Column-->
+    <ng-container matColumnDef="direccion">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Dirección </mat-header-cell>
+        <mat-cell *matCellDef="let sucursal"> {{sucursal.direccion}} </mat-cell>
+    </ng-container>
+
+    <!-- ciudad Column-->
+    <ng-container matColumnDef="usuarioCrea">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Usuario Crea </mat-header-cell>
+        <mat-cell *matCellDef="let ciudad"> {{ciudad.usuarioCrea}} </mat-cell>
+    </ng-container>
+
+    <!-- ciudad Column-->
+    <ng-container matColumnDef="fechaHoraCrea">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Crea </mat-header-cell>
+        <mat-cell *matCellDef="let ciudad"> {{ciudad.terminalCrea}} </mat-cell>
+    </ng-container>
+
+    <!-- ciudad Column-->
+    <ng-container matColumnDef="terminalCrea">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Terminal Crea </mat-header-cell>
+        <mat-cell *matCellDef="let ciudad"> {{ciudad.terminalCrea}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+</mat-table>

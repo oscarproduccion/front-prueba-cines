@@ -1,0 +1,85 @@
+<div *ngIf="isLoading" class="isLoading">
+    <mat-progress-spinner color="primary" mode="indeterminate">
+    </mat-progress-spinner>
+</div>
+
+<mat-toolbar>
+    <span>Reserva de peliculas</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon plus-icon" (click)="abrirDialogoCrear()"
+        aria-label="Example icon-button with plus icon">
+        <mat-icon>add_box</mat-icon>
+    </button>
+</mat-toolbar>
+
+<mat-table [dataSource]="salaReservas" matSort>
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
+        <mat-cell *matCellDef="let salaReserva"> {{salaReserva.id}} </mat-cell>
+    </ng-container>
+
+    <!-- nombre Column-->
+    <ng-container matColumnDef="nombreSucursal">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Sucursal </mat-header-cell>
+        <mat-cell *matCellDef="let salaReserva"> {{salaReserva.peliculaAgendasByPeliculaAgendasId.sucursalesBySucursalesId.nombre}} </mat-cell>
+    </ng-container>
+
+    <!-- nombre Column-->
+    <ng-container matColumnDef="nombreSala">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Sala </mat-header-cell>
+        <mat-cell *matCellDef="let salaReserva">
+            {{salaReserva.salasBySalasId.nombre}} </mat-cell>
+    </ng-container>
+
+    <!-- nombre Column-->
+    <ng-container matColumnDef="nombrePelicula">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Pelicula </mat-header-cell>
+        <mat-cell *matCellDef="let salaReserva">
+            {{salaReserva.peliculaAgendasByPeliculaAgendasId.peliculasByPeliculasId.nombreOriginal}} </mat-cell>
+    </ng-container>
+
+    <!-- nombre Column-->
+    <ng-container matColumnDef="fechaHoraAgenda">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Hora </mat-header-cell>
+        <mat-cell *matCellDef="let salaReserva">
+            {{salaReserva.peliculaAgendasByPeliculaAgendasId.fechaHoraAgenda}} </mat-cell>
+    </ng-container>
+    <!-- nombre Column-->
+    <ng-container matColumnDef="fila">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Fila </mat-header-cell>
+        <mat-cell *matCellDef="let salaReserva">
+            {{salaReserva.fila}}
+        </mat-cell>
+    </ng-container>
+
+        <!-- nombre Column-->
+        <ng-container matColumnDef="silla">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Silla </mat-header-cell>
+            <mat-cell *matCellDef="let salaReserva">
+                {{salaReserva.silla}}
+            </mat-cell>
+        </ng-container>
+
+    <!-- ciudad Column-->
+    <ng-container matColumnDef="usuarioCrea">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Usuario Crea </mat-header-cell>
+        <mat-cell *matCellDef="let salaReserva"> {{salaReserva.usuarioCrea}} </mat-cell>
+    </ng-container>
+
+    <!-- ciudad Column-->
+    <ng-container matColumnDef="fechaHoraCrea">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Crea </mat-header-cell>
+        <mat-cell *matCellDef="let salaReserva"> {{salaReserva.fechaHoraCrea | date:"yyyy:MM:dd HH:mm"}} </mat-cell>
+    </ng-container>
+
+    <!-- ciudad Column-->
+    <ng-container matColumnDef="terminalCrea">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Terminal Crea </mat-header-cell>
+        <mat-cell *matCellDef="let salaReserva"> {{salaReserva.terminalCrea}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+</mat-table>

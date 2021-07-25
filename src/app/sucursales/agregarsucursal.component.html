@@ -1,0 +1,46 @@
+<div>
+  <div class="add-title">
+    <h2 class="primary">Agregar sucursal</h2>
+  </div>
+  <div>
+    <form [formGroup]="addCusForm" (change)="formChanged()">
+      <mat-grid-list cols="2" rowHeight="85px">
+        <mat-grid-tile>
+          <div class="text-inside">
+            <mat-form-field>
+              <input matInput placeholder="Nombre" value={{nombre}} formControlName="nombre" required>
+            </mat-form-field>
+          </div>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <div class="text-inside">
+            <mat-form-field>
+              <input matInput placeholder="Dirección" value={{direccion}} formControlName="direccion" required>
+            </mat-form-field>
+          </div>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <div class="text-inside">
+            <mat-form-field>
+              <mat-select placeholder="Seleccione la ciudad" name="selCiudad" (selectionChange)="changeClient($event.value)"
+                >
+                <mat-option *ngFor="let ciudad of ciudades" [value]="ciudad.id">{{
+                  ciudad.nombre }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </mat-grid-tile>
+
+      </mat-grid-list>
+
+      <div class="btn-sec">
+        <button mat-raised-button type="submit" color="primary" class="Update-btn"
+          (click)="agregarSucursal()">Guardar</button>
+        <button mat-raised-button type="button" class="Discard-btn" (click)="closeDialog()">Cancelar</button>
+      </div>
+
+    </form>
+  </div>
+</div>
